@@ -63,9 +63,9 @@ license {
 val javaComponent: SoftwareComponent = components["java"]
 
 tasks {
-    processResources {
+    /*processResources {
         eachFile { expand("version" to project.version) }
-    }
+    }*/
 
     build {
         dependsOn(named("shadowJar"))

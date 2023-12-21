@@ -201,16 +201,10 @@ public final class CloudExpansionManager {
           }
 
           // loop through what's left on the main thread
-          plugin
-              .getServer()
-              .getScheduler()
-              .runTask(
-                  plugin,
-                  () -> {
-                    try {
-                      for (Map.Entry<String, CloudExpansion> entry : values.entrySet()) {
-                        String name = entry.getKey();
-                        CloudExpansion expansion = entry.getValue();
+          try {
+            for (Map.Entry<String, CloudExpansion> entry : values.entrySet()) {
+              String name = entry.getKey();
+              CloudExpansion expansion = entry.getValue();
 
               expansion.setName(name);
 
