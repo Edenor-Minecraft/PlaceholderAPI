@@ -20,13 +20,15 @@ repositories {
 
     maven("https://repo.codemc.org/repository/maven-public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven( "https://jitpack.io" )
 }
 
 dependencies {
     implementation("org.bstats:bstats-bukkit:3.0.1")
     implementation("net.kyori:adventure-platform-bukkit:4.3.1")
 
-    compileOnly("org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT")
+    compileOnlyApi("com.github.Edenor-Minecraft:Foldenor:1.20.4_141") // this is temp
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
 
     testImplementation("org.openjdk.jmh:jmh-core:1.32")
@@ -38,8 +40,8 @@ dependencies {
 
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17 // this is temp
+    targetCompatibility = JavaVersion.VERSION_17 // this is temp
 
     withJavadocJar()
     withSourcesJar()

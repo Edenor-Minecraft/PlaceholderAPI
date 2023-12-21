@@ -212,28 +212,27 @@ public final class CloudExpansionManager {
                         String name = entry.getKey();
                         CloudExpansion expansion = entry.getValue();
 
-                        expansion.setName(name);
+              expansion.setName(name);
 
-                        Optional<PlaceholderExpansion> localOpt =
-                            plugin.getLocalExpansionManager().findExpansionByName(name);
-                        if (localOpt.isPresent()) {
-                          PlaceholderExpansion local = localOpt.get();
-                          if (local.isRegistered()) {
-                            expansion.setHasExpansion(true);
-                            expansion.setShouldUpdate(
-                                !local.getVersion().equalsIgnoreCase(expansion.getLatestVersion()));
-                          }
-                        }
+              Optional<PlaceholderExpansion> localOpt =
+                      plugin.getLocalExpansionManager().findExpansionByName(name);
+              if (localOpt.isPresent()) {
+                PlaceholderExpansion local = localOpt.get();
+                if (local.isRegistered()) {
+                  expansion.setHasExpansion(true);
+                  expansion.setShouldUpdate(
+                          !local.getVersion().equalsIgnoreCase(expansion.getLatestVersion()));
+                }
+              }
 
-                        cache.put(toIndexName(expansion), expansion);
-                      }
-                    } catch (Throwable e) {
-                      // ugly swallowing of every throwable, but we have to be defensive
-                      plugin
-                          .getLogger()
-                          .log(Level.WARNING, "Failed to download expansion information", e);
-                    }
-                  });
+              cache.put(toIndexName(expansion), expansion);
+            }
+          } catch (Throwable e) {
+            // ugly swallowing of every throwable, but we have to be defensive
+            plugin
+                    .getLogger()
+                    .log(Level.WARNING, "Failed to download expansion information", e);
+          }
         });
   }
 
